@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const navLinks = [
   { label: "Features", href: "#features" },
   { label: "Pricing", href: "#pricing" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "FAQ", href: "#faq" },
+  { label: "About", href: "/about" },
 ];
 
 const Navbar = () => {
@@ -27,11 +29,17 @@ const Navbar = () => {
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((l) => (
-            <button key={l.href} onClick={() => scrollTo(l.href)} className="text-foreground/70 hover:text-primary font-body text-sm font-medium transition-colors">
-              {l.label}
-            </button>
-          ))}
+          {navLinks.map((l) =>
+            l.href.startsWith("/") ? (
+              <Link key={l.href} to={l.href} className="text-foreground/70 hover:text-primary font-body text-sm font-medium transition-colors">
+                {l.label}
+              </Link>
+            ) : (
+              <button key={l.href} onClick={() => scrollTo(l.href)} className="text-foreground/70 hover:text-primary font-body text-sm font-medium transition-colors">
+                {l.label}
+              </button>
+            )
+          )}
         </div>
 
         {/* Desktop CTA */}
@@ -51,11 +59,17 @@ const Navbar = () => {
       {/* Mobile drawer */}
       {open && (
         <div className="md:hidden bg-background border-t border-border px-4 pb-6 space-y-4">
-          {navLinks.map((l) => (
-            <button key={l.href} onClick={() => scrollTo(l.href)} className="block w-full text-left text-foreground/80 font-body text-base py-2">
-              {l.label}
-            </button>
-          ))}
+          {navLinks.map((l) =>
+            l.href.startsWith("/") ? (
+              <Link key={l.href} to={l.href} onClick={() => setOpen(false)} className="block w-full text-left text-foreground/80 font-body text-base py-2">
+                {l.label}
+              </Link>
+            ) : (
+              <button key={l.href} onClick={() => scrollTo(l.href)} className="block w-full text-left text-foreground/80 font-body text-base py-2">
+                {l.label}
+              </button>
+            )
+          )}
           <a href="https://app.lumka.io/login" className="block text-primary font-body text-base py-2">Sign In</a>
           <button onClick={() => scrollTo("#waitlist-form")} className="w-full bg-gradient-to-r from-coral to-destructive text-coral-foreground font-body font-semibold px-6 py-3 rounded-lg">
             Join Waitlist
