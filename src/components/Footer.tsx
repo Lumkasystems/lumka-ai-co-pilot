@@ -11,7 +11,7 @@ const footerLinks = {
   ],
   Company: [
     { label: "About", href: "/about" },
-    { label: "Careers", href: "#" },
+    { label: "Careers", href: "/careers" },
     { label: "Blog", href: "#" },
     { label: "Contact", href: "mailto:lumkasystems@gmail.com" },
     { label: "Press Kit", href: "#" },
