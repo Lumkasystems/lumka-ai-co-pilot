@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const footerLinks = {
   Product: [
     { label: "Features", href: "#features" },
@@ -15,8 +17,8 @@ const footerLinks = {
     { label: "Press Kit", href: "#" },
   ],
   Legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
     { label: "Security", href: "#" },
     { label: "Cookie Policy", href: "#" },
   ],
@@ -55,6 +57,10 @@ const Footer = () => {
                       <button onClick={() => scrollTo(l.href)} className="font-body text-sm text-slate-dark-foreground/60 hover:text-slate-dark-foreground transition">
                         {l.label}
                       </button>
+                    ) : l.href.startsWith("/") ? (
+                      <Link to={l.href} className="font-body text-sm text-slate-dark-foreground/60 hover:text-slate-dark-foreground transition">
+                        {l.label}
+                      </Link>
                     ) : (
                       <a href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="font-body text-sm text-slate-dark-foreground/60 hover:text-slate-dark-foreground transition">
                         {l.label}
