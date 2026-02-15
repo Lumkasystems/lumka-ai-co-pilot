@@ -10,7 +10,7 @@ const footerLinks = {
     { label: "What's New", href: "#" },
   ],
   Company: [
-    { label: "About", href: "#" },
+    { label: "About", href: "/about" },
     { label: "Careers", href: "#" },
     { label: "Blog", href: "#" },
     { label: "Contact", href: "mailto:lumkasystems@gmail.com" },
