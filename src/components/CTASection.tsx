@@ -68,7 +68,7 @@ const CTASection = () => {
             <a href="https://youtube.com/watch?v=demo" target="_blank" rel="noopener noreferrer" className="border-2 border-primary-foreground text-primary-foreground font-body font-medium text-sm px-6 py-3 rounded-xl hover:bg-primary-foreground/10 transition">
               Watch Demo Video
             </a>
-            <a href="/lumka-brochure.pdf" className="border-2 border-primary-foreground text-primary-foreground font-body font-medium text-sm px-6 py-3 rounded-xl hover:bg-primary-foreground/10 transition">
+            <a href="/brochure" className="border-2 border-primary-foreground text-primary-foreground font-body font-medium text-sm px-6 py-3 rounded-xl hover:bg-primary-foreground/10 transition">
               Download Brochure
             </a>
           </div>
