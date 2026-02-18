@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import logoImg from "@/assets/logo_lumka.png";
 
 const navLinks = [
   { label: "Features", href: "#features" },
@@ -23,8 +24,16 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-20 px-4">
         {/* Logo */}
-        <a href="#" className="font-display text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-          Lumka
+        <a href="#" className="flex items-center gap-2.5">
+          <img
+            src={logoImg}
+            alt="Lumka logo"
+            className="h-9 w-9 object-contain"
+            style={{ filter: "hue-rotate(200deg) saturate(2) brightness(0.6) sepia(0.4)" }}
+          />
+          <span className="font-display text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            Lumka
+          </span>
         </a>
 
         {/* Desktop links */}
