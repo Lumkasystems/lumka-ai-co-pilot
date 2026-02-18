@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Mail, Lock, Eye, EyeOff, ArrowLeft } from "lucide-react";
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const [isRegister, setIsRegister] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [remember, setRemember] = useState(false);
@@ -10,8 +11,18 @@ const SignIn = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Connect to your auth backend here
-    console.log(isRegister ? "Register" : "Sign In", form);
+    // Navigate to waitlist dashboard with mock user data
+    navigate("/dashboard", {
+      state: {
+        user: {
+          name: form.name || form.email.split("@")[0],
+          email: form.email,
+          joinedDate: new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
+          waitlistPosition: Math.floor(Math.random() * 450) + 20,
+          referralCode: (form.name || form.email.split("@")[0]).toUpperCase().replace(/\s+/g, "").slice(0, 6) + Math.floor(Math.random() * 99),
+        },
+      },
+    });
   };
 
   return (
