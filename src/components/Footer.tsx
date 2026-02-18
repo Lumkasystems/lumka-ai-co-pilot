@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logoImg from "@/assets/logo_lumka.png";
 
 const footerLinks = {
   Product: [
@@ -38,7 +39,15 @@ const Footer = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <p className="font-display text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">Lumka</p>
+            <div className="flex items-center gap-2 mb-2">
+              <img
+                src={logoImg}
+                alt="Lumka logo"
+                className="h-8 w-8 object-contain opacity-80"
+                style={{ filter: "brightness(10)" }}
+              />
+              <p className="font-display text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Lumka</p>
+            </div>
             <p className="font-body text-sm text-slate-dark-foreground/60 mb-4">Your AI Co-Pilot for VA Work</p>
             <p className="font-body text-xs text-slate-dark-foreground/50 leading-relaxed mb-6">
               Empowering virtual assistants with AI automation. Save 15+ hours per week on repetitive tasks and focus on what actually matters.

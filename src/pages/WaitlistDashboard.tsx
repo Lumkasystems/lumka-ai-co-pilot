@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Rocket, Gift, Users, Calendar, CheckCircle, Twitter, Linkedin, Mail, LogOut, Copy, Check, Share2 } from "lucide-react";
+import logoImg from "@/assets/logo_lumka.png";
 
 const LAUNCH_DATE = new Date("2026-03-31");
 const daysUntilLaunch = Math.max(0, Math.ceil((LAUNCH_DATE.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
@@ -51,10 +52,13 @@ const WaitlistDashboard = () => {
       {/* Nav */}
       <nav className="sticky top-0 z-50 bg-slate-dark/95 backdrop-blur border-b border-primary/10 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-coral to-primary rounded-xl flex items-center justify-center shadow-lg">
-              <Rocket size={20} className="text-primary-foreground" />
-            </div>
+          <div className="flex items-center gap-2.5">
+            <img
+              src={logoImg}
+              alt="Lumka logo"
+              className="h-9 w-9 object-contain"
+              style={{ filter: "brightness(10)" }}
+            />
             <span className="font-display text-2xl font-bold bg-gradient-to-r from-coral to-accent bg-clip-text text-transparent">
               Lumka
             </span>
