@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Rocket, Gift, Users, Calendar, CheckCircle, Twitter, Linkedin, Mail, LogOut, Copy, Check, Share2 } from "lucide-react";
-import logoImg from "@/assets/logo_lumka.png";
+import logoImg from "@/assets/lumka_logo_primary.svg";
 
 const LAUNCH_DATE = new Date("2026-03-31");
 const daysUntilLaunch = Math.max(0, Math.ceil((LAUNCH_DATE.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
@@ -56,12 +56,8 @@ const WaitlistDashboard = () => {
             <img
               src={logoImg}
               alt="Lumka logo"
-              className="h-9 w-9 object-contain"
-              style={{ filter: "brightness(10)" }}
+              className="h-9 object-contain brightness-0 invert"
             />
-            <span className="font-display text-2xl font-bold bg-gradient-to-r from-coral to-accent bg-clip-text text-transparent">
-              Lumka
-            </span>
           </div>
           <div className="flex items-center gap-4">
             <span className="font-body text-sm text-slate-dark-foreground/60 hidden sm:block">{user.email}</span>
