@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logoImg from "@/assets/logo_lumka.png";
+import logoImg from "@/assets/lumka_logo_primary.svg";
 
 const footerLinks = {
   Product: [
@@ -39,14 +39,12 @@ const Footer = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-2">
+            <div className="mb-2">
               <img
                 src={logoImg}
                 alt="Lumka logo"
-                className="h-8 w-8 object-contain opacity-80"
-                style={{ filter: "brightness(10)" }}
+                className="h-9 object-contain brightness-0 invert"
               />
-              <p className="font-display text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Lumka</p>
             </div>
             <p className="font-body text-sm text-slate-dark-foreground/60 mb-4">Your AI Co-Pilot for VA Work</p>
             <p className="font-body text-xs text-slate-dark-foreground/50 leading-relaxed mb-6">
