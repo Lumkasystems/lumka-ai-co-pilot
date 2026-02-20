@@ -65,7 +65,7 @@ const CTASection = () => {
         <div className="mt-16">
           <p className="font-body text-sm text-primary-foreground/70 mb-6">Not ready yet? No problem!</p>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <a href="https://youtube.com/@lumka_app?si=XHvklaOipy-XbeCu" target="_blank" rel="noopener noreferrer" className="border-2 border-primary-foreground text-primary-foreground font-body font-medium text-sm px-6 py-3 rounded-xl hover:bg-primary-foreground/10 transition">
+            <a href="https://youtube.com/@lumka_app" target="_blank" rel="noopener noreferrer" className="border-2 border-primary-foreground text-primary-foreground font-body font-medium text-sm px-6 py-3 rounded-xl hover:bg-primary-foreground/10 transition">
               Watch Demo Video
             </a>
             <a href="/brochure" className="border-2 border-primary-foreground text-primary-foreground font-body font-medium text-sm px-6 py-3 rounded-xl hover:bg-primary-foreground/10 transition">
@@ -78,8 +78,8 @@ const CTASection = () => {
             {[
               { label: "𝕏", href: "https://x.com/lumkaassistant" },
               { label: "📷", href: "https://www.instagram.com/lumka_assistant" },
-              { label: "▶", href: "https://youtube.com/@lumka_app?si=XHvklaOipy-XbeCu" },
-              { label: "f", href: "https://www.facebook.com/profile.php?id=61588310139794" },
+              { label: "▶", href: "https://youtube.com/@lumka_app" },
+              { label: "f", href: "https://www.facebook.com/Lumka_Assistant" },
               { label: "♪", href: "https://www.tiktok.com/@lumka_assistant_" },
             ].map((s) => (
               <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary-foreground/15 flex items-center justify-center text-primary-foreground text-sm hover:bg-primary-foreground/30 transition">
