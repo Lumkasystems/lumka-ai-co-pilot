@@ -6,7 +6,7 @@ const footerLinks = {
     { label: "Features", href: "#features" },
     { label: "Pricing", href: "#pricing" },
     { label: "How It Works", href: "#how-it-works" },
-    { label: "Demo Video", href: "https://youtube.com/watch?v=demo" },
+    { label: "Demo Video", href: "https://youtube.com/@lumka_app?si=XHvklaOipy-XbeCu" },
     { label: "Roadmap", href: "#" },
     { label: "What's New", href: "#" },
   ],
