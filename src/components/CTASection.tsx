@@ -76,10 +76,11 @@ const CTASection = () => {
           <p className="font-body text-xs text-primary-foreground/60 mb-4">Or follow our journey:</p>
           <div className="flex justify-center gap-4">
             {[
-              { label: "𝕏", href: "https://twitter.com/lumka_app" },
-              { label: "in", href: "https://linkedin.com/company/lumka" },
-              { label: "▶", href: "https://youtube.com/@lumka" },
-              { label: "📷", href: "https://instagram.com/lumka_app" },
+              { label: "𝕏", href: "https://x.com/lumkaassistant" },
+              { label: "📷", href: "https://www.instagram.com/lumka_assistant" },
+              { label: "▶", href: "https://youtube.com/@lumka_app?si=XHvklaOipy-XbeCu" },
+              { label: "f", href: "https://www.facebook.com/profile.php?id=61588310139794" },
+              { label: "♪", href: "https://www.tiktok.com/@lumka_assistant_" },
             ].map((s) => (
               <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary-foreground/15 flex items-center justify-center text-primary-foreground text-sm hover:bg-primary-foreground/30 transition">
                 {s.label}

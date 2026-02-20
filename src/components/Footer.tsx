@@ -15,7 +15,11 @@ const footerLinks = {
     { label: "Careers", href: "/careers" },
     { label: "Blog", href: "#" },
     { label: "Contact", href: "/contact" },
-    { label: "Press Kit", href: "#" },
+    { label: "Instagram", href: "https://www.instagram.com/lumka_assistant" },
+    { label: "Twitter / X", href: "https://x.com/lumkaassistant" },
+    { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61588310139794" },
+    { label: "YouTube", href: "https://youtube.com/@lumka_app?si=XHvklaOipy-XbeCu" },
+    { label: "TikTok", href: "https://www.tiktok.com/@lumka_assistant_" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },

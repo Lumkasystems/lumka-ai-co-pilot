@@ -95,8 +95,8 @@ const Contact = () => {
                 <Mail size={20} className="text-primary" />
                 <h3 className="font-display font-semibold text-foreground">Email Directly</h3>
               </div>
-              <a href="mailto:lumkasystems@gmail.com" className="font-body text-sm text-primary hover:underline">
-                lumkasystems@gmail.com
+              <a href="mailto:lumkaassistant@yahoo.com" className="font-body text-sm text-primary hover:underline">
+                lumkaassistant@yahoo.com
               </a>
             </div>
 
