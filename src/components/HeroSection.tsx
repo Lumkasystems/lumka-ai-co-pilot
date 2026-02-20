@@ -34,7 +34,7 @@ const HeroSection = () => {
                 Join Waitlist – Free Early Access
               </button>
               <a
-                href="https://youtube.com/watch?v=demo"
+                href="https://youtube.com/@lumka_app?si=XHvklaOipy-XbeCu"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border-2 border-primary text-primary font-body font-semibold text-base md:text-lg px-8 py-4 rounded-xl hover:bg-secondary transition-colors"
