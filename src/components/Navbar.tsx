@@ -21,8 +21,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
-      <div className="container mx-auto flex items-center justify-between h-20 px-4">
+    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border transition-all duration-300">
+      <div className="container mx-auto flex items-center justify-between h-16 sm:h-20 px-4">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2.5">
           <img
