@@ -1,13 +1,33 @@
 import { useState, FormEvent } from "react";
-import { Check } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const CTASection = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (email) setSubmitted(true);
+    if (!email) return;
+    setLoading(true);
+    setError("");
+    try {
+      const { data, error: fnError } = await supabase.functions.invoke("waitlist-signup", {
+        body: { email },
+      });
+      if (fnError) throw fnError;
+      if (data?.error) {
+        setError(data.error);
+      } else {
+        setSubmitted(true);
+      }
+    } catch (err: any) {
+      setError(err?.message || "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -33,11 +53,18 @@ const CTASection = () => {
               />
               <button
                 type="submit"
-                className="h-14 px-8 rounded-xl sm:rounded-l-none bg-gradient-to-r from-coral to-destructive text-coral-foreground font-body font-bold text-base hover:brightness-110 transition"
+                disabled={loading}
+                className="h-14 px-8 rounded-xl sm:rounded-l-none bg-gradient-to-r from-coral to-destructive text-coral-foreground font-body font-bold text-base hover:brightness-110 transition disabled:opacity-70 flex items-center justify-center gap-2"
               >
-                Join Waitlist
+                {loading ? <><Loader2 size={18} className="animate-spin" /> Joining...</> : "Join Waitlist"}
               </button>
             </form>
+
+            {error && (
+              <p className="text-sm font-body text-destructive-foreground bg-destructive/20 rounded-lg px-4 py-2 max-w-xl mx-auto mb-4">
+                {error}
+              </p>
+            )}
 
             <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm font-body text-primary-foreground/80 mb-8">
               {["No credit card required", "Unsubscribe anytime", "Early access guaranteed", "50% founding member discount"].map((t) => (
