@@ -26,10 +26,12 @@ serve(async (req) => {
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
+    const trimmedEmail = email.trim().toLowerCase();
+
     // Store in database
     const { error: dbError } = await supabase
       .from("waitlist_signups")
-      .insert({ email: email.trim().toLowerCase() });
+      .insert({ email: trimmedEmail });
 
     if (dbError) {
       if (dbError.code === "23505") {
@@ -41,11 +43,38 @@ serve(async (req) => {
       throw dbError;
     }
 
-    // Send notification email via Lovable AI gateway (Resend-style)
-    // Since we don't have a mail service, we'll use a simple SMTP-free approach:
-    // notify via the database entry — the owner checks the Cloud dashboard.
-    // For actual email delivery, we log the signup.
-    console.log(`New waitlist signup: ${email}`);
+    // Send notification email via Resend
+    const resendApiKey = Deno.env.get("RESEND_API_KEY");
+    if (!resendApiKey) {
+      console.error("RESEND_API_KEY is not configured");
+    } else {
+      const resendRes = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${resendApiKey}`,
+        },
+        body: JSON.stringify({
+          from: "Lumka Waitlist <onboarding@resend.dev>",
+          to: ["lumkaassistant@yahoo.com"],
+          subject: `🎉 New Waitlist Signup: ${trimmedEmail}`,
+          html: `
+            <h2>New Waitlist Signup!</h2>
+            <p><strong>Email:</strong> ${trimmedEmail}</p>
+            <p><strong>Time:</strong> ${new Date().toISOString()}</p>
+            <p>A new person has joined the Lumka waitlist.</p>
+          `,
+        }),
+      });
+
+      if (!resendRes.ok) {
+        const errBody = await resendRes.text();
+        console.error(`Resend API error [${resendRes.status}]: ${errBody}`);
+      } else {
+        await resendRes.json();
+        console.log(`Notification email sent for signup: ${trimmedEmail}`);
+      }
+    }
 
     return new Response(
       JSON.stringify({ success: true, message: "Successfully joined the waitlist!" }),
