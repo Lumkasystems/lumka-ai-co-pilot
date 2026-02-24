@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      profiles: {
+        Row: {
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          referral_code: string
+          referral_count: number
+          referred_by: string | null
+          waitlist_position: number | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          first_name?: string
+          id: string
+          last_name?: string
+          referral_code: string
+          referral_count?: number
+          referred_by?: string | null
+          waitlist_position?: number | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          referral_code?: string
+          referral_count?: number
+          referred_by?: string | null
+          waitlist_position?: number | null
+        }
+        Relationships: []
+      }
       waitlist_signups: {
         Row: {
           created_at: string
@@ -37,7 +73,12 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      calculate_waitlist_position: {
+        Args: { user_id: string }
+        Returns: number
+      }
+      generate_referral_code: { Args: { user_name: string }; Returns: string }
+      get_waitlist_position: { Args: { user_uuid: string }; Returns: number }
     }
     Enums: {
       [_ in never]: never
