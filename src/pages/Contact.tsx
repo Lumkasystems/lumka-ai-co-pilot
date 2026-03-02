@@ -1,14 +1,33 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Mail, Clock, HelpCircle, Send } from "lucide-react";
+import { ArrowLeft, Mail, Clock, HelpCircle, Send, Loader2 } from "lucide-react";
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+    try {
+      const { data, error: fnError } = await supabase.functions.invoke("contact-form", {
+        body: form,
+      });
+      if (fnError) throw fnError;
+      if (data?.error) {
+        setError(data.error);
+      } else {
+        setSubmitted(true);
+      }
+    } catch (err: any) {
+      setError(err?.message || "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -34,19 +53,32 @@ const Contact = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label className="font-body text-sm font-medium text-foreground mb-1.5 block">Name</label>
-                  <input
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full rounded-lg border border-border bg-card px-4 py-2.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
-                    placeholder="Your name"
-                  />
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="font-body text-sm font-medium text-foreground mb-1.5 block">First Name</label>
+                    <input
+                      type="text"
+                      required
+                      value={form.firstName}
+                      onChange={(e) => setForm({ ...form, firstName: e.target.value })}
+                      className="w-full rounded-lg border border-border bg-card px-4 py-2.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
+                      placeholder="First name"
+                    />
+                  </div>
+                  <div>
+                    <label className="font-body text-sm font-medium text-foreground mb-1.5 block">Last Name</label>
+                    <input
+                      type="text"
+                      required
+                      value={form.lastName}
+                      onChange={(e) => setForm({ ...form, lastName: e.target.value })}
+                      className="w-full rounded-lg border border-border bg-card px-4 py-2.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
+                      placeholder="Last name"
+                    />
+                  </div>
                 </div>
                 <div>
-                  <label className="font-body text-sm font-medium text-foreground mb-1.5 block">Email</label>
+                  <label className="font-body text-sm font-medium text-foreground mb-1.5 block">Your Email</label>
                   <input
                     type="email"
                     required
@@ -57,18 +89,7 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label className="font-body text-sm font-medium text-foreground mb-1.5 block">Subject</label>
-                  <input
-                    type="text"
-                    required
-                    value={form.subject}
-                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                    className="w-full rounded-lg border border-border bg-card px-4 py-2.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
-                    placeholder="What's this about?"
-                  />
-                </div>
-                <div>
-                  <label className="font-body text-sm font-medium text-foreground mb-1.5 block">Message</label>
+                  <label className="font-body text-sm font-medium text-foreground mb-1.5 block">Send a Message</label>
                   <textarea
                     required
                     rows={5}
@@ -78,11 +99,19 @@ const Contact = () => {
                     placeholder="Tell us how we can help..."
                   />
                 </div>
+
+                {error && (
+                  <p className="text-sm font-body text-destructive bg-destructive/10 rounded-lg px-4 py-2">
+                    {error}
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full rounded-lg bg-gradient-to-r from-primary to-accent py-3 font-display font-semibold text-white hover:opacity-90 transition flex items-center justify-center gap-2"
+                  disabled={loading}
+                  className="w-full rounded-lg bg-gradient-to-r from-primary to-accent py-3 font-display font-semibold text-white hover:opacity-90 transition flex items-center justify-center gap-2 disabled:opacity-70"
                 >
-                  <Send size={16} /> Send Message
+                  {loading ? <><Loader2 size={16} className="animate-spin" /> Sending...</> : <><Send size={16} /> Submit</>}
                 </button>
               </form>
             )}

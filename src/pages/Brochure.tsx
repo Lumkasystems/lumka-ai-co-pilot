@@ -66,7 +66,7 @@ const Brochure = () => {
           <div className="flex flex-wrap justify-center gap-4 text-sm text-white/60">
             <span>lumka.app</span>
             <span>•</span>
-            <span>Launching March 2026</span>
+            <span>Launching April 2026</span>
           </div>
         </div>
       </section>
@@ -253,7 +253,7 @@ const Brochure = () => {
           <div className="space-y-2 text-sm text-white/70">
             <p>📧 lumkasystems@gmail.com</p>
             <p>🌐 lumka.app</p>
-            <p>📅 Launching March 2026</p>
+            <p>📅 Launching April 2026</p>
           </div>
 
           <p className="mt-8 text-xs text-white/40">© 2026 Lumka Systems. All rights reserved.</p>

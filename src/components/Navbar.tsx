@@ -49,7 +49,6 @@ const Navbar = () => {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <Link to="/signin" className="text-primary font-body text-sm font-medium hover:underline">Sign In</Link>
           <button onClick={() => scrollTo("#waitlist-form")} className="bg-gradient-to-r from-coral to-destructive text-coral-foreground font-body text-sm font-semibold px-6 py-2.5 rounded-lg hover:-translate-y-0.5 transition-transform shadow-md">
             Join Waitlist
           </button>
@@ -75,7 +74,6 @@ const Navbar = () => {
               </button>
             )
           )}
-          <Link to="/signin" onClick={() => setOpen(false)} className="block text-primary font-body text-base py-2">Sign In</Link>
           <button onClick={() => scrollTo("#waitlist-form")} className="w-full bg-gradient-to-r from-coral to-destructive text-coral-foreground font-body font-semibold px-6 py-3 rounded-lg">
             Join Waitlist
           </button>

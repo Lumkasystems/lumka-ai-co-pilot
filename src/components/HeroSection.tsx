@@ -23,7 +23,7 @@ const HeroSection = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              Launching March 2026 • Built for Virtual Assistants
+              Launching April 2026 • Built for Virtual Assistants
             </motion.p>
 
             <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-[1.1] mb-6">
@@ -60,7 +60,7 @@ const HeroSection = () => {
             </div>
 
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-body text-foreground/60">
-              {["Launching March 2026", "500+ VAs on waitlist", "Saves 15+ hrs/week", "Works with Gmail, Calendar, Drive"].map((t, i) => (
+              {["Launching April 2026", "500+ VAs on waitlist", "Saves 15+ hrs/week", "Works with Gmail, Calendar, Drive"].map((t, i) => (
                 <motion.span
                   key={t}
                   className="flex items-center gap-1.5"
