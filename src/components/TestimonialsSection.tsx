@@ -22,7 +22,7 @@ const stats = [
   { num: "15-20 hrs/week", label: "Average expected time savings" },
   { num: "$800/month", label: "Average expected cost savings" },
   { num: "127+", label: "Feature requests from waitlist" },
-  { num: "March 2026", label: "Launch date" },
+  { num: "April 2026", label: "Launch date" },
 ];
 
 const TestimonialsSection = () => (

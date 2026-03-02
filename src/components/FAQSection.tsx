@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "When will Lumka launch?",
-    a: "March 2026 is our target launch date. By joining the waitlist now you get:\n\n\ud83c\udf81 50% off for life (founding member pricing)\n\ud83d\ude80 Early access before public launch\n\ud83d\udcac Direct input on features we build\n\ud83d\udcca Beta testing opportunities\n\ud83c\udfaf Priority onboarding and support",
+    a: "April 2026 is our target launch date. By joining the waitlist now you get:\n\n\ud83c\udf81 50% off for life (founding member pricing)\n\ud83d\ude80 Early access before public launch\n\ud83d\udcac Direct input on features we build\n\ud83d\udcca Beta testing opportunities\n\ud83c\udfaf Priority onboarding and support",
   },
   {
     q: "Do I need technical skills to use Lumka?",

@@ -81,11 +81,11 @@ h2 { color: #6d28d9; font-size: 18px; }
 
 <h2>HERE'S WHAT HAPPENS NEXT:</h2>
 <ul>
-<li>📅 <strong>Launch Date:</strong> March 2026</li>
+<li>📅 <strong>Launch Date:</strong> April 2026</li>
 <li>🎁 <strong>Your Exclusive Perk:</strong> 50% off for LIFE (locked in!)</li>
 <li>📧 <strong>What to Expect:</strong>
   <ul>
-    <li>Early beta testing invitations (February 2026)</li>
+    <li>Early beta testing invitations (March 2026)</li>
     <li>Product updates and sneak peeks</li>
     <li>Launch day early access</li>
   </ul>
@@ -131,7 +131,7 @@ h2 { color: #6d28d9; font-size: 18px; }
 
 <p>Got questions? Just hit reply – we read every email personally!</p>
 
-<p>See you in March 2026! 🚀</p>
+<p>See you in April 2026! 🚀</p>
 
 <p><strong>Best,<br>The Lumka Team</strong></p>
 

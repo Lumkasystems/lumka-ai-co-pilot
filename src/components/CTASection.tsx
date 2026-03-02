@@ -82,7 +82,7 @@ const CTASection = () => {
           <div className="bg-mint rounded-2xl p-10 max-w-lg mx-auto text-mint-foreground">
             <h3 className="font-display font-bold text-2xl mb-3">🎉 You're on the list!</h3>
             <p className="font-body text-base mb-3">
-              Check your email for confirmation. We'll notify you when Lumka launches in March 2026.
+              Check your email for confirmation. We'll notify you when Lumka launches in April 2026.
             </p>
             <p className="font-body text-base font-semibold">Founding member discount: 50% off locked in for life</p>
           </div>

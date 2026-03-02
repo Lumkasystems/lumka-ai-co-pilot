@@ -184,7 +184,7 @@ const WaitlistDashboard = () => {
               </div>
             </div>
             <p className="font-body text-sm text-slate-dark-foreground/60">
-              March 2026 — You'll get <span className="text-accent font-semibold">early access</span>
+              April 2026 — You'll get <span className="text-accent font-semibold">early access</span>
             </p>
           </div>
         </div>
