@@ -14,8 +14,9 @@ const CTASection = () => {
     setLoading(true);
     setError("");
     try {
+      const interestedPlan = sessionStorage.getItem("lumka_interested_plan") || null;
       const { data, error: fnError } = await supabase.functions.invoke("waitlist-signup", {
-        body: { email },
+        body: { email, interestedPlan },
       });
       if (fnError) throw fnError;
       if (data?.error) {

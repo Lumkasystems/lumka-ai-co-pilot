@@ -13,7 +13,7 @@ serve(async (req) => {
   }
 
   try {
-    const { email, userId } = await req.json();
+    const { email, userId, interestedPlan } = await req.json();
 
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
@@ -184,7 +184,7 @@ h2 { color: #6d28d9; font-size: 18px; }
 
     const { error: dbError } = await supabase
       .from("waitlist_signups")
-      .insert({ email: trimmedEmail });
+      .insert({ email: trimmedEmail, interested_plan: interestedPlan || null });
 
     if (dbError) {
       if (dbError.code === "23505") {
@@ -196,9 +196,70 @@ h2 { color: #6d28d9; font-size: 18px; }
       throw dbError;
     }
 
-    // Send notification to admin
+    // Send confirmation email to user + notification to admin
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
     if (resendApiKey) {
+      // Send welcome email to the user
+      await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${resendApiKey}`,
+        },
+        body: JSON.stringify({
+          from: "Lumka Waitlist <onboarding@resend.dev>",
+          to: [trimmedEmail],
+          subject: "Welcome to the Lumka Waitlist! 🎉",
+          html: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><style>
+body { font-family: 'Segoe UI', Arial, sans-serif; color: #1e293b; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px; }
+h1 { color: #6d28d9; }
+h2 { color: #6d28d9; font-size: 18px; }
+.agent { padding: 8px 0; }
+.divider { border: none; border-top: 1px solid #e2e8f0; margin: 24px 0; }
+.social a { color: #6d28d9; text-decoration: none; margin-right: 16px; }
+</style></head>
+<body>
+<h1>Welcome to Lumka! 🎉</h1>
+<p>You're officially on the Lumka waitlist!</p>
+<p>Thank you for joining 600+ virtual assistants who are ready to reclaim their time.</p>
+
+<h2>WHAT HAPPENS NEXT:</h2>
+<ul>
+<li>📅 <strong>Launch Date:</strong> April 2026</li>
+<li>🎁 <strong>Your Exclusive Perk:</strong> 50% off for LIFE (locked in!)</li>
+<li>📧 Early beta testing invitations (March 2026)</li>
+</ul>
+
+<hr class="divider">
+
+<h2>WHAT IS LUMKA?</h2>
+<p>Your AI co-pilot with 5 specialized agents:</p>
+<div class="agent">📧 <strong>Email Guardian</strong> – Scans inbox 24/7</div>
+<div class="agent">📅 <strong>Calendar Concierge</strong> – Books meetings, detects conflicts</div>
+<div class="agent">💰 <strong>Finance Watchdog</strong> – Tracks bills & deadlines</div>
+<div class="agent">🎨 <strong>Content Studio</strong> – Creates posts, transcribes meetings</div>
+<div class="agent">📊 <strong>Operations Lab</strong> – Research & data work</div>
+
+<hr class="divider">
+
+<h2>STAY CONNECTED</h2>
+<div class="social">
+<a href="https://www.linkedin.com/company/lumka-assistant">🔗 LinkedIn</a>
+<a href="https://x.com/lumkaassistant">🐦 Twitter/X</a>
+<a href="https://www.instagram.com/lumka_assistant">📸 Instagram</a>
+</div>
+
+<p>See you in April 2026! 🚀</p>
+<p><strong>– The Lumka Team</strong></p>
+</body>
+</html>`,
+        }),
+      });
+
+      // Send notification to admin
       await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
@@ -212,8 +273,8 @@ h2 { color: #6d28d9; font-size: 18px; }
           html: `
 <h2>New Waitlist Signup!</h2>
 <p><strong>Email:</strong> ${trimmedEmail}</p>
-<p><strong>Time:</strong> ${new Date().toISOString()}</p>
-<p>A new person has joined the Lumka waitlist.</p>`,
+<p><strong>Interested Plan:</strong> ${interestedPlan || 'Not specified'}</p>
+<p><strong>Time:</strong> ${new Date().toISOString()}</p>`,
         }),
       });
     }

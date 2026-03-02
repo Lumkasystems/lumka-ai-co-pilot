@@ -1,0 +1,1 @@
+ALTER TABLE public.waitlist_signups ADD COLUMN interested_plan TEXT DEFAULT NULL;

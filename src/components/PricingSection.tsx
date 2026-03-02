@@ -71,7 +71,12 @@ const plans = [
 ];
 
 const PricingSection = () => {
-  const scrollTo = () => document.querySelector("#waitlist-form")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToPlan = (planName?: string) => {
+    if (planName) {
+      sessionStorage.setItem("lumka_interested_plan", planName);
+    }
+    document.querySelector("#waitlist-form")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section id="pricing" className="bg-soft-gray py-24 lg:py-28">
@@ -123,7 +128,7 @@ const PricingSection = () => {
               {p.ctaLink ? (
                 <a href={p.ctaLink} className={`block text-center font-body font-semibold text-sm px-4 py-3 rounded-xl ${p.ctaClass}`}>{p.cta}</a>
               ) : (
-                <button onClick={scrollTo} className={`w-full font-body font-semibold text-sm px-4 py-3 rounded-xl ${p.ctaClass}`}>{p.cta}</button>
+                <button onClick={() => scrollToPlan(p.name)} className={`w-full font-body font-semibold text-sm px-4 py-3 rounded-xl ${p.ctaClass}`}>{p.cta}</button>
               )}
 
               {p.subtext && <p className="font-body text-[11px] text-foreground/40 text-center mt-2">{p.subtext}</p>}
