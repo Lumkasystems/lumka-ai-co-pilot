@@ -4,7 +4,7 @@ import { Rocket, Gift, Users, Calendar, CheckCircle, Twitter, Linkedin, Mail, Lo
 import { supabase } from "@/integrations/supabase/client";
 import logoImg from "@/assets/lumka_logo_primary.svg";
 
-const LAUNCH_DATE = new Date("2026-03-31");
+const LAUNCH_DATE = new Date("2026-04-30");
 const daysUntilLaunch = Math.max(0, Math.ceil((LAUNCH_DATE.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
 
 interface Profile {
