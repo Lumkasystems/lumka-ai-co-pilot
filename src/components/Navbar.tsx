@@ -49,6 +49,9 @@ const Navbar = () => {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">
+          <Link to="/signin" className="text-foreground/70 hover:text-primary font-body text-sm font-medium transition-colors">
+            Sign In
+          </Link>
           <button onClick={() => scrollTo("#waitlist-form")} className="bg-gradient-to-r from-coral to-destructive text-coral-foreground font-body text-sm font-semibold px-6 py-2.5 rounded-lg hover:-translate-y-0.5 transition-transform shadow-md">
             Join Waitlist
           </button>

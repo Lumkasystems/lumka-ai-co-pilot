@@ -102,10 +102,7 @@ const CTASection = () => {
           <div className="flex justify-center gap-4">
             {[
               { label: "𝕏", href: "https://x.com/lumkaassistant" },
-              { label: "📷", href: "https://www.instagram.com/lumka_assistant" },
-              { label: "▶", href: "https://youtube.com/@lumka_app" },
               { label: "f", href: "https://www.facebook.com/Lumka_Assistant" },
-              { label: "♪", href: "https://www.tiktok.com/@lumka_assistant_" },
             ].map((s) => (
               <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary-foreground/15 flex items-center justify-center text-primary-foreground text-sm hover:bg-primary-foreground/30 transition">
                 {s.label}
