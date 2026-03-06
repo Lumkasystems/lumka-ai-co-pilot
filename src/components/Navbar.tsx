@@ -77,6 +77,13 @@ const Navbar = () => {
               </button>
             )
           )}
+          <Link
+            to="/signin"
+            onClick={() => setOpen(false)}
+            className="block w-full text-left text-foreground/80 font-body text-base py-2"
+          >
+            Sign In
+          </Link>
           <button onClick={() => scrollTo("#waitlist-form")} className="w-full bg-gradient-to-r from-coral to-destructive text-coral-foreground font-body font-semibold px-6 py-3 rounded-lg">
             Join Waitlist
           </button>
