@@ -93,9 +93,6 @@ const CTASection = () => {
         <div className="mt-16">
           <p className="font-body text-sm text-primary-foreground/70 mb-6">Not ready yet? No problem!</p>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <a href="https://youtube.com/@lumka_app" target="_blank" rel="noopener noreferrer" className="border-2 border-primary-foreground text-primary-foreground font-body font-medium text-sm px-6 py-3 rounded-xl hover:bg-primary-foreground/10 transition">
-              Watch Demo Video
-            </a>
             <a href="/brochure" className="border-2 border-primary-foreground text-primary-foreground font-body font-medium text-sm px-6 py-3 rounded-xl hover:bg-primary-foreground/10 transition">
               Download Brochure
             </a>
