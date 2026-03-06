@@ -47,16 +47,6 @@ const HeroSection = () => {
                 Join Waitlist – Free Early Access
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </motion.button>
-              <motion.a
-                href="https://youtube.com/@lumka_app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-2 border-primary text-primary font-body font-semibold text-base md:text-lg px-8 py-4 rounded-xl hover:bg-secondary transition-colors text-center"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Watch 2-Min Demo →
-              </motion.a>
             </div>
 
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-body text-foreground/60">
